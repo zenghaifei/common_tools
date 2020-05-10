@@ -1,0 +1,17 @@
+version: "3.1"
+services:
+  frp:
+    image: colinzeng/common_tools.frp:0.32.1
+    restart: always
+    ports:
+      - 7000:7000
+      - 7500:7500
+      - 6000:6000
+      - 5432:5432
+      - 27017:27017
+      - 8080:8080
+    environment:
+      - frp_vhost_http_port=8080
+      - frp_max_pool_count=3
+      - frp_dashboard_user=zenghaifei
+      - frp_dashboard_pwd=123456
