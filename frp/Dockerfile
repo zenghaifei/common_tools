@@ -5,8 +5,8 @@ RUN wget https://github.com/fatedier/frp/releases/download/v${FRP_VERSION}/frp_$
     && mkdir /frp \
     && mv frp_${FRP_VERSION}_linux_amd64/frp* /frp/ \
     && rm -rf frp_${FRP_VERSION}_linux_amd64* \
-    && wget https://github.com/zenghaifei/common_tools/raw/master/frps.ini \
-    && wget https://github.com/zenghaifei/liberty_infrastructure.frp/raw/master/frpc.ini \
+    && wget https://raw.githubusercontent.com/zenghaifei/common_tools/master/frp/frps.ini \
+    && wget https://raw.githubusercontent.com/zenghaifei/common_tools/master/frp/frpc.ini \
     && mv *.ini /frp/
 WORKDIR /frp
 
