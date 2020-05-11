@@ -39,4 +39,5 @@ services:
   navigator:
     image: navigator:latest
     restart: latest
-    ports: 8000:80
+    ports: 
+      - 8000:80
