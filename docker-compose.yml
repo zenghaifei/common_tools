@@ -36,8 +36,3 @@ services:
       - YAPI_MAIL_ENABLE=false
       - YAPI_LDAP_LOGIN_ENABLE=false
       - YAPI_PLUGINS=[]
-  navigator:
-    image: navigator:latest
-    restart: always
-    ports: 
-      - 8000:80
