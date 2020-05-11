@@ -38,6 +38,6 @@ services:
       - YAPI_PLUGINS=[]
   navigator:
     image: navigator:latest
-    restart: latest
+    restart: always
     ports: 
       - 8000:80
