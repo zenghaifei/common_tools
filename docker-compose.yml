@@ -17,7 +17,7 @@ services:
       - 8081:8080
       - 50000:50000
     volumes:
-      - /Users/colin/Applications/docker-apps/data/genkins_home:var/jenkins_home
+      - /Users/colin/Applications/docker-apps/data/genkins_home:/var/jenkins_home
         #mongodb:
         #  # Ref: https://hub.docker.com/r/bitnami/mongodb/
         #  image: bitnami/mongodb:4.2
