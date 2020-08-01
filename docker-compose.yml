@@ -11,7 +11,7 @@ services:
     volumes:
       - /Users/colin/Applications/docker-apps/data/postgres:/var/lib/postgresql/data
   jenkins:
-    image:jenkins/jenkins:lts
+    image: jenkins/jenkins:lts
     restart: always
     ports:
       - 8081:8080
