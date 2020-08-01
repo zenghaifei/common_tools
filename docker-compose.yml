@@ -10,29 +10,29 @@ services:
       POSTGRES_PASSWORD: hope
     volumes:
       - /Users/colin/Applications/docker-apps/data/postgres:/var/lib/postgresql/data
-  mongodb:
-    # Ref: https://hub.docker.com/r/bitnami/mongodb/
-    image: bitnami/mongodb:4.2
-    restart: always
-    ports:
-      - 27017:27017
-    environment:
-      # 超级管理员用户名为root
-      - MONGODB_ROOT_PASSWORD=hope
-    volumes:
-      - /Users/colin/Applications/docker-apps/data/mongodb:/bitnami
-  yapi:
-    # Ref: https://github.com/fjc0k/docker-YApi
-    image: jayfong/yapi:latest
-    restart: always
-    ports:
-      - 3000:3000
-    environment:
-      - YAPI_ADMIN_ACCOUNT=colin
-      - YAPI_ADMIN_PASSWORD=hope
-      - YAPI_CLOSE_REGISTER=true
-      - YAPI_DB_SERVERNAME=mongodb
-      - YAPI_DB_DATABASE=yapi
-      - YAPI_MAIL_ENABLE=false
-      - YAPI_LDAP_LOGIN_ENABLE=false
-      - YAPI_PLUGINS=[]
+        #mongodb:
+        #  # Ref: https://hub.docker.com/r/bitnami/mongodb/
+        #  image: bitnami/mongodb:4.2
+        #  restart: always
+        #  ports:
+        #    - 27017:27017
+        #  environment:
+        #    # 超级管理员用户名为root
+        #    - MONGODB_ROOT_PASSWORD=hope
+        #  volumes:
+        #    - /Users/colin/Applications/docker-apps/data/mongodb:/bitnami
+        #yapi:
+        #  # Ref: https://github.com/fjc0k/docker-YApi
+        #  image: jayfong/yapi:latest
+        #  restart: always
+        #  ports:
+        #    - 3000:3000
+        #  environment:
+        #    - YAPI_ADMIN_ACCOUNT=colin
+        #    - YAPI_ADMIN_PASSWORD=hope
+        #    - YAPI_CLOSE_REGISTER=true
+        #    - YAPI_DB_SERVERNAME=mongodb
+        #    - YAPI_DB_DATABASE=yapi
+        #    - YAPI_MAIL_ENABLE=false
+        #    - YAPI_LDAP_LOGIN_ENABLE=false
+        #    - YAPI_PLUGINS=[]
