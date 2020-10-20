@@ -1,0 +1,15 @@
+version: '3.1'
+networks:
+  default:
+    external:
+      name: colin
+services:
+  mysql:
+    image: mysql:5.7
+    restart: always
+    ports:
+      - 3306:3306
+    volumes:
+      - /Users/colin/Applications/docker-apps/data/mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
