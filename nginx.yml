@@ -2,15 +2,18 @@ version: '3.1'
 networks:
   default:
     external:
-      name: colin
+      name: freeriver
 services:
   nginx:
     image: nginx:latest
+    container_name: nginx
     restart: always
     ports:
       - 80:80
+      - 443:443
     volumes:
-      - /Users/colin/Applications/docker-apps/nginx.conf:/etc/nginx/nginx.conf:ro
+      - /root/common_tools/configs/nginx.conf:/etc/nginx/nginx.conf:ro
+      - /root/common_tools/logs/nginx/:/etc/nginx/logs/
     environment:
       - NGINX_HOST=freeriver.cn
-      - NGINX_PORT=80
+        #- NGINX_PORT=80
