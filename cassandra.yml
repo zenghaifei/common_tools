@@ -2,15 +2,16 @@ version: '3.1'
 networks:
   default:
     external:
-      name: colin
+      name: freeriver
 services:
   cassandra1:
     image: cassandra:latest
+    container_name: cassandra1
     restart: always
     ports:
       - 7000:7000
       - 9042:9042
     volumes:
-      - /Users/colin/Applications/docker-apps/data/cassandra1:/var/lib/cassandra
+      - /root/common_tools/datas/cassandra1:/var/lib/cassandra
     environment:
       - CASSANDRA_DC=datacenter1
