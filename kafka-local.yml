@@ -1,9 +1,9 @@
 networks:
   default:
     external:
-      name: freeriver
+      name: host
 
-version: "3.8"
+version: "3.3"
 services:
   kafka-ui:
     image: provectuslabs/kafka-ui:latest
