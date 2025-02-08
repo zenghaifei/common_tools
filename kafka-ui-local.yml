@@ -1,9 +1,8 @@
 networks:
   default:
-    external:
-      name: freeriver
+    name: freeriver
+    external: true
 
-version: "3.3"
 services:
   akhq:
       # build:
@@ -12,12 +11,11 @@ services:
       restart: unless-stopped
       ports: 
         - 9000:8080
-      links:
-        - kafka-server
       environment:
         AKHQ_CONFIGURATION: |
           akhq:
             connections:
               kafka-server:
                 properties:
-                  bootstrap.servers: "kafka-server:9092"
+                  # current not works, should use host network on linux as mac or windows docker don't supported the host network
+                  bootstrap.servers: "host.docker.internal:9092"  

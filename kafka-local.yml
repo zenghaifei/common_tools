@@ -1,9 +1,8 @@
 networks:
   default:
-    external:
-      name: freeriver
+    name: freeriver
+    external: true
 
-version: "3.3"
 services:
   kafka-server:
     image: apache/kafka-native:latest
