@@ -1,24 +1,11 @@
 networks:
   default:
     external:
-      name: host
+      name: freeriver
 
 version: "3.3"
 services:
-  kafka-ui:
-    image: provectuslabs/kafka-ui:latest
-    container_name: kafka-ui
-    restart: always
-    ports:
-      - 9000:8080
-    environment:
-      - DYNAMIC_CONFIG_ENABLED=true
-    depends_on:
-      - kafka-service
-    volumes:
-      - ~/kui/:/etc/kafkaui/
-
-  kafka-service:
+  kafka-server:
     image: apache/kafka-native:latest
     container_name: kafka-native
     ports:
@@ -27,10 +14,10 @@ services:
       KAFKA_NODE_ID: 1
       KAFKA_PROCESS_ROLES: broker,controller
       KAFKA_LISTENERS: PLAINTEXT://:9092,CONTROLLER://:9093
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-service:9092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
       KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
-      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@kafka-service:9093
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@kafka-server:9093
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
       KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
