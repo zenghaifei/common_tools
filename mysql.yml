@@ -1,15 +1,24 @@
-version: '3.1'
-networks:
-  default:
-    external:
-      name: colin
+version: '3.8'
 services:
   mysql:
-    image: mysql:5.7
+    image: mysql/mysql-server:8.0  # ARM-optimized image [12](@ref)
+    platform: linux/arm64          # Force ARM64 architecture [2,12](@ref)
+    container_name: mysql8-m4
     restart: always
-    ports:
-      - 3306:3306
-    volumes:
-      - /Users/colin/Applications/docker-apps/data/mysql:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=root
+      MYSQL_ROOT_PASSWORD: "root"  # Replace with strong password
+      MYSQL_USER: "colin"                          # Optional custom user
+      MYSQL_PASSWORD: "colin"                      # Optional custom user password
+      TZ: "Asia/Shanghai"                   # Set your timezone [9](@ref)
+    volumes:
+      - ./mysql-data:/var/lib/mysql                # Persist data [5,14](@ref)
+      - ./mysql-config:/etc/mysql/conf.d           # Custom configs [7](@ref)
+    ports:
+      - "3306:3306"                                # Default port mapping
+    command: 
+      - "--default-authentication-plugin=mysql_native_password"  # Legacy auth support [2,8](@ref)
+      - "--character-set-server=utf8mb4" 
+      - "--collation-server=utf8mb4_unicode_ci"
+volumes:
+  mysql-data:
+  mysql-config:
